@@ -1,0 +1,16 @@
+{
+  "features": [
+    "CAGE",
+    "CDOI",
+    "AN3"
+  ],
+  "classes": [
+    "Normal",
+    "MAM",
+    "SAM"
+  ],
+  "training_dataset": "ds_mics_ch",
+  "training_rows": 8879,
+  "version": "1.0.1781011283",
+  "algorithm": "RandomForestClassifier"
+}

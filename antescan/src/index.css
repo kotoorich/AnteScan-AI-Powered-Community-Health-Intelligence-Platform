@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme */
+    --bg: 255 255 255;
+    --bg-secondary: 245 245 245;
+    --bg-card: 255 255 255;
+    --bg-elevated: 250 250 250;
+    --fg: 26 26 26;
+    --fg-secondary: 102 102 102;
+    --fg-tertiary: 153 153 153;
+    --border: 224 224 224;
+    --accent: 252 209 22;
+  }
+
+  .dark {
+    /* Dark theme (MTN-style) */
+    --bg: 26 26 26;
+    --bg-secondary: 36 36 36;
+    --bg-card: 44 44 44;
+    --bg-elevated: 56 56 56;
+    --fg: 255 255 255;
+    --fg-secondary: 170 170 170;
+    --fg-tertiary: 130 130 130;
+    --border: 58 58 58;
+    --accent: 252 209 22;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overscroll-behavior-y: none;
+  }
+
+  /* Hide scrollbars on mobile */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Custom scrollbar for desktop admin */
+  .pretty-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .pretty-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .pretty-scroll::-webkit-scrollbar-thumb {
+    background: rgb(var(--border));
+    border-radius: 4px;
+  }
+  .pretty-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--fg-tertiary));
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-bg-card rounded-2xl border border-border;
+  }
+  .card-elevated {
+    @apply bg-bg-card rounded-2xl shadow-card dark:shadow-card-dark;
+  }
+  .btn-gold {
+    @apply bg-ghana-gold text-black font-semibold rounded-xl px-5 py-3 transition-all active:scale-95 hover:brightness-105 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-outline {
+    @apply border border-border text-fg font-medium rounded-xl px-5 py-3 transition-all active:scale-95 hover:bg-bg-secondary;
+  }
+  .btn-danger {
+    @apply bg-ghana-red text-white font-semibold rounded-xl px-5 py-3 transition-all active:scale-95 hover:brightness-110;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold;
+  }
+  .input {
+    @apply w-full bg-bg-secondary border border-border rounded-xl px-4 py-3 text-fg placeholder-fg-tertiary focus:outline-none focus:border-ghana-gold focus:ring-2 focus:ring-ghana-gold/20 transition;
+  }
+  .label {
+    @apply block text-sm font-medium text-fg-secondary mb-1.5;
+  }
+
+  /* MTN-style raised center button shadow */
+  .raised-center {
+    box-shadow:
+      0 -4px 12px rgba(252, 209, 22, 0.3),
+      0 6px 18px rgba(252, 209, 22, 0.45);
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgb(var(--bg-secondary)) 0%,
+      rgb(var(--bg-elevated)) 50%,
+      rgb(var(--bg-secondary)) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 1.5s linear infinite;
+  }
+
+  /* Safe area for iOS notches */
+  .safe-top { padding-top: env(safe-area-inset-top); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+/* Disable body scroll when mobile menu open */
+body.no-scroll {
+  overflow: hidden;
+}

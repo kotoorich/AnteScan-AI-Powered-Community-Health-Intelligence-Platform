@@ -1,0 +1,27 @@
+{
+  "features": [
+    "WB4",
+    "WB6A",
+    "CM17"
+  ],
+  "feature_aliases": {
+    "WB4": "age",
+    "CM11": "parity",
+    "MN6": "anc_visits",
+    "WB6A": "education"
+  },
+  "classes": [
+    "low",
+    "moderate",
+    "high",
+    "emergency"
+  ],
+  "training_dataset": "ds_mics_wm",
+  "training_rows": 6705,
+  "version": "1.0.1781011281",
+  "algorithm": "RandomForestClassifier",
+  "hyperparameters": {
+    "n_estimators": 150,
+    "max_depth": 12
+  }
+}
